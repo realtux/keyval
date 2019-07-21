@@ -11,12 +11,12 @@ typedef struct entry_t {
 
 typedef struct {
     entry_t **entries;
-} hashtable_t;
+} ht_t;
 
-hashtable_t *hashtable_create(void);
-void hashtable_set(hashtable_t *, const char *, const char *);
-char *hashtable_get(hashtable_t *, const char *);
-void hashtable_destroy(hashtable_t *);
-void hashtable_dump(hashtable_t *);
+ht_t *ht_create(void);
+void ht_set(ht_t *, const char *, const char *);
+char *ht_get(ht_t *, const char *);
+void ht_destroy(ht_t *);
+void ht_dump(ht_t *);
 
 #endif

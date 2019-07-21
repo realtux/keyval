@@ -1,11 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
 
 #include "benchmark.h"
+#include "hashmap.h"
 
 int main(void) {
-    hashtable_benchmark(200000);
+    ht_t *ht = ht_create();
+
+    ht_set(ht, "name", "brian");
+    ht_set(ht, "age", "34");
+
+    printf("%s is %s\n", ht_get(ht, "name"), ht_get(ht, "age"));
+
+    ht_benchmark(200000);
+
     return 0;
 }

@@ -5,12 +5,12 @@
 
 #include "hashmap.h"
 
-void hashtable_benchmark(int interations) {
+void ht_benchmark(int interations) {
     clock_t start, end;
     double set_time;
     double get_time;
 
-    hashtable_t *hashtable = hashtable_create();
+    ht_t *ht = ht_create();
 
     char temp[16];
 
@@ -18,7 +18,7 @@ void hashtable_benchmark(int interations) {
     start = clock();
     for (int i = 0; i < interations; ++i) {
         sprintf(temp, "test%d", i);
-        hashtable_set(hashtable, temp, temp);
+        ht_set(ht, temp, temp);
     }
     end = clock();
     set_time = ((double) (end - start)) / CLOCKS_PER_SEC;
@@ -34,5 +34,5 @@ void hashtable_benchmark(int interations) {
     printf("setting %d took: %fs, %fms\n", interations, set_time, set_time * 1000);
     printf("getting %d took: %fs, %fms\n", interations, get_time, get_time * 1000);
 
-    hashtable_destroy(hashtable);
+    ht_destroy(ht);
 }

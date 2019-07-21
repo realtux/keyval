@@ -25,7 +25,7 @@ unsigned int hash(const char *key) {
     return value;
 }
 
-entry_t *hashtable_pair(const char *key, const char *value) {
+entry_t *ht_pair(const char *key, const char *value) {
     // allocate the entry
     entry_t *entry = malloc(sizeof(entry) * 1);
     entry->key = malloc(strlen(key) + 1);
@@ -41,9 +41,9 @@ entry_t *hashtable_pair(const char *key, const char *value) {
     return entry;
 }
 
-hashtable_t *hashtable_create(void) {
+ht_t *ht_create(void) {
     // allocate table
-    hashtable_t *hashtable = malloc(sizeof(hashtable_t) * 1);
+    ht_t *hashtable = malloc(sizeof(ht_t) * 1);
 
     // allocate table entries
     hashtable->entries = malloc(sizeof(entry_t*) * TABLE_SIZE);
@@ -57,7 +57,7 @@ hashtable_t *hashtable_create(void) {
     return hashtable;
 }
 
-void hashtable_set(hashtable_t *hashtable, const char *key, const char *value) {
+void ht_set(ht_t *hashtable, const char *key, const char *value) {
     unsigned int bucket = hash(key);
 
     // try to look up an entry set
@@ -65,7 +65,7 @@ void hashtable_set(hashtable_t *hashtable, const char *key, const char *value) {
 
     // no entry means bucket empty, insert immediately
     if (entry == NULL) {
-        hashtable->entries[bucket] = hashtable_pair(key, value);
+        hashtable->entries[bucket] = ht_pair(key, value);
         return;
     }
 
@@ -88,10 +88,10 @@ void hashtable_set(hashtable_t *hashtable, const char *key, const char *value) {
     }
 
     // end of chain reached without a match, add new
-    prev->next = hashtable_pair(key, value);
+    prev->next = ht_pair(key, value);
 }
 
-char *hashtable_get(hashtable_t *hashtable, const char *key) {
+char *ht_get(ht_t *hashtable, const char *key) {
     unsigned int bucket = hash(key);
 
     // try to find a valid bucket
@@ -117,7 +117,7 @@ char *hashtable_get(hashtable_t *hashtable, const char *key) {
     return NULL;
 }
 
-void hashtable_destroy(hashtable_t *hashtable) {
+void ht_destroy(ht_t *hashtable) {
     for (int i = 0; i < TABLE_SIZE; ++i) {
         // lookup first entry in the bucket
         entry_t *entry = hashtable->entries[i];
@@ -149,7 +149,7 @@ void hashtable_destroy(hashtable_t *hashtable) {
     free(hashtable);
 }
 
-void hashtable_dump(hashtable_t *hashtable) {
+void ht_dump(ht_t *hashtable) {
     for (int i = 0; i < TABLE_SIZE; ++i) {
         entry_t *entry = hashtable->entries[i];
 

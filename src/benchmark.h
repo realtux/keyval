@@ -1,6 +1,6 @@
 #ifndef BENCHMARK_H
 #define BENCHMARK_H
 
-int hashtable_benchmark(int);
+void ht_benchmark(int);
 
 #endif
