@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "hashmap.h"
+#include "hashtable.h"
 
 unsigned int hash(const char *key) {
     unsigned long int value = 0;

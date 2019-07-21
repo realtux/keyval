@@ -1,5 +1,5 @@
-#ifndef HASHMAP_H
-#define HASHMAP_H
+#ifndef HASHTABLE_H
+#define HASHTABLE_H
 
 #define TABLE_SIZE 262144
 

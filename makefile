@@ -10,7 +10,7 @@ INCLUDES=-I. -I./src
 LIB_OBJS =
 LIB_OBJS += build/objs/keyval.o
 LIB_OBJS += build/objs/benchmark.o
-LIB_OBJS += build/objs/hashmap.o
+LIB_OBJS += build/objs/hashtable.o
 
 EXEC=keyval
 

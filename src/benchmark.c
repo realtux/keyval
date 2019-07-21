@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "hashmap.h"
+#include "hashtable.h"
 
 void ht_benchmark(int interations) {
     clock_t start, end;

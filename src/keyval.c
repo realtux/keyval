@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include "benchmark.h"
-#include "hashmap.h"
+#include "hashtable.h"
 
 int main(void) {
     ht_t *ht = ht_create();
