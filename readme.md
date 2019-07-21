@@ -1,3 +1,3 @@
-#### keyval
+## keyval
 
-like you needed another key/value in memory database
+Like you needed another in-memory key/value database.
