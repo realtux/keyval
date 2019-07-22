@@ -11,6 +11,7 @@ LIB_OBJS =
 LIB_OBJS += build/objs/keyval.o
 LIB_OBJS += build/objs/benchmark.o
 LIB_OBJS += build/objs/hashtable.o
+LIB_OBJS += build/objs/server.o
 
 EXEC=keyval
 
