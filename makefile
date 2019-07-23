@@ -8,9 +8,11 @@ LINKS=-lpthread
 INCLUDES=-I. -I./src
 
 LIB_OBJS =
-LIB_OBJS += build/objs/keyval.o
 LIB_OBJS += build/objs/benchmark.o
+LIB_OBJS += build/objs/config.o
 LIB_OBJS += build/objs/hashtable.o
+LIB_OBJS += build/objs/keyval.o
+LIB_OBJS += build/objs/repl.o
 LIB_OBJS += build/objs/server.o
 
 EXEC=keyval
@@ -26,4 +28,5 @@ $(LIB_OBJS): build/objs/%.o: src/%.c
 	@$(CC) $(CFLAGS) -c $< $(INCLUDES) $(LINKS) -o $@
 
 clean:
+	mkdir -p build/objs
 	find . -type f -name '*.o' -delete
