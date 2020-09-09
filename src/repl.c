@@ -34,7 +34,6 @@ char *read_token(char *input) {
     // start by eating any space
     for (; i < input_len; ++i) {
         if (input[i] != ' ') break;
-        ++i;
     }
 
     // read characters in one at a time until a space is encountered
@@ -47,7 +46,7 @@ char *read_token(char *input) {
     }
 
     // realign and resize memory to remove the token just found
-    memmove(input, input + i + 1, strlen(input) + 1 - i);
+    memmove(input, input + i, strlen(input) + 1 - i);
     input = realloc(input, sizeof(char) * strlen(input) + 1);
 
     return token;
@@ -77,12 +76,15 @@ void repl_init(void) {
             case 1: {
                 char *key = read_token(input);
                 printf("%s\n", ht_get(ht, key));
+                free(key);
                 break;
             }
             case 2: {
                 char *key = read_token(input);
                 char *value = read_token(input);
                 ht_set(ht, key, value);
+                free(key);
+                free(value);
                 break;
             }
             default:
